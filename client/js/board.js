@@ -13,19 +13,28 @@ Template.board.helpers({
 
     isMarked: (x, y) => {
         if (Session.get("inGame")) {
-            let myGame = Games.findOne();
+            let myGame = Games.findOne({
+                $and: [{status: {$ne: 'waiting'}},
+                    {$or: [{player1: Meteor.userId()}, {player2: Meteor.userId()}]}]
+            });
 
-            if (myGame !== undefined && myGame.status !== "waiting") {
-                for (let i = 0; i < myGame.moves.length; i++) {
-                    if (myGame.moves[i].move === x + '' + y) {
-                        if (myGame.moves[i].playerID === Meteor.userId())
-                            return "<p class='mark'>X</p>";
-                        else
-                            return "<p class='mark'>O</p>";
+            if (myGame !== undefined) {
+                if (myGame.moves.length) {
+                    for (let i = 0; i < myGame.moves.length; i++) {
+                        let myGameMoves = myGame.moves[i];
+                        if (myGameMoves.move.positionX == x && myGameMoves.move.positionY == y) {
+                            if (myGameMoves.playerID === Meteor.userId()) {
+                                return "<p class='mark'>X</p>";
+                            }
+                            else {
+                                return "<p class='mark'>O</p>";
+                            }
+                        }
                     }
                 }
-                if (myGame.status === Meteor.userId())
+                if (myGame.status === Meteor.userId()) {
                     return "<div class='selectableField' x='" + x + "' y='" + y + "'></div>";
+                }
             }
         }
     }

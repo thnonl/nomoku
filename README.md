@@ -11,3 +11,7 @@
 3. Run `npm install`
 4. Run `meteor`
 5. Visit http://localhost:3000/
+
+## Author
+Nam Thai
+First game with Meteor
