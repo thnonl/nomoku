@@ -1,0 +1,39 @@
+/* CSS declarations go here */
+table {
+    margin: auto;
+    font-family: arial;
+}
+
+.field {
+    height: 30px;
+    width: 30px;
+    background-color: lightyellow;
+    overflow: hidden;
+    border: 1px solid black;
+}
+
+#ui {
+    text-align: center;
+}
+
+#play-btn {
+    width: 100px;
+    height: 50px;
+    font-size: 25px;
+}
+
+.mark {
+    text-align: center;
+    font-size: 25px;
+    overflow: hidden;
+    padding: 0px;
+    margin: 0px;
+}
+
+.selectableField {
+    text-align: center;
+    height: 30px;
+    width: 30px;
+    padding: 0px;
+    margin: 0px;
+}
