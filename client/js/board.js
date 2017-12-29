@@ -1,6 +1,6 @@
 import {Meteor} from 'meteor/meteor';
 import {Template} from 'meteor/templating';
-import Constants from '../../lib/constants';
+import {Constants, GameStatus} from '../../lib/constants';
 import {Games} from '../../lib/collections';
 
 Template.board.helpers({
@@ -14,20 +14,20 @@ Template.board.helpers({
     isMarked: (x, y) => {
         if (Session.get("inGame")) {
             let myGame = Games.findOne({
-                $and: [{status: {$ne: 'waiting'}},
+                $and: [{status: {$ne: GameStatus.WAITING}},
                     {$or: [{player1: Meteor.userId()}, {player2: Meteor.userId()}]}]
             });
 
             if (myGame !== undefined) {
-                if (myGame.moves.length) {
+                if (myGame.moves !== undefined && myGame.moves.length) {
                     for (let i = 0; i < myGame.moves.length; i++) {
                         let myGameMoves = myGame.moves[i];
                         if (myGameMoves.move.positionX == x && myGameMoves.move.positionY == y) {
                             if (myGameMoves.playerID === Meteor.userId()) {
-                                return "<p class='mark'>X</p>";
+                                return "<p class='mark animated out'>X</p>";
                             }
                             else {
-                                return "<p class='mark'>O</p>";
+                                return "<p class='mark animated out'>O</p>";
                             }
                         }
                     }

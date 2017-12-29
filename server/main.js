@@ -2,9 +2,10 @@ import {Meteor} from 'meteor/meteor';
 import {UserStatus} from 'meteor/mizzao:user-status';
 import {gameLogic} from '../lib/gameLogic';
 import {Games} from '../lib/collections';
+import {GameStatus} from "../lib/constants";
 
 Meteor.publish('Games', function gamesPublication() {
-    return Games.find({status: "waiting"}, {
+    return Games.find({status: GameStatus.WAITING}, {
         fields: {
             "status": 1,
             "player1": 1,
@@ -30,7 +31,7 @@ UserStatus.events.on("connectionLogout", (fields) => {
         });
 
     if (game != undefined) {
-        if (game.status !== "waiting" && game.status !== "end") {
+        if (game.status !== GameStatus.WAITING && game.status !== GameStatus.END) {
             if (game.player1 === fields.userId) {
                 gameLogic.setGameResult(game._id, game.player2);
                 gameLogic.removePlayer(game._id, "player1");

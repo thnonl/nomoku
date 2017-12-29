@@ -3,11 +3,15 @@
         {{#each sideLength}}
             {{#let rowIndex=@index}}
                 <tr>
-                    {{#each sideLength}}
-                        <td class="field" x="{{rowIndex}}" y="{{@index}}">
-                            {{{isMarked rowIndex @index}}}
-                        </td>
-                    {{/each}}
+                    {{#transition in="bounceIn"}}
+                        {{#each sideLength}}
+                            <td class="field animated out" x="{{rowIndex}}" y="{{@index}}">
+                                {{#transition in="bounceIn:800"}}
+                                    {{{isMarked rowIndex @index}}}
+                                {{/transition}}
+                            </td>
+                        {{/each}}
+                    {{/transition}}
                 </tr>
             {{/let}}
         {{/each}}
