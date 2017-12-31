@@ -38,6 +38,10 @@ Template.board.helpers({
             }
         }
     }
+    ,
+    active: () => {
+        return Session.get("inGame") ? "active" : "in-active";
+    }
 });
 
 Template.board.events({

@@ -5,7 +5,7 @@
                 <tr>
                     {{#transition in="bounceIn"}}
                         {{#each sideLength}}
-                            <td class="field animated out" x="{{rowIndex}}" y="{{@index}}">
+                            <td class="field {{active}} animated" x="{{rowIndex}}" y="{{@index}}">
                                 {{#transition in="bounceIn:800"}}
                                     {{{isMarked rowIndex @index}}}
                                 {{/transition}}

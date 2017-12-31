@@ -9,8 +9,8 @@ table td {
 }
 
 .field {
-    height: 60px;
-    width: 60px;
+    height: 45px;
+    width: 45px;
     background-color: lightyellow;
     overflow: hidden;
     border: 1px solid black;
@@ -30,18 +30,18 @@ table td {
 #board{
     position: absolute;
     top: 170px;
-    left: calc((100% - 596px)/2);
+    left: calc((100% - 461px)/2);
 }
 
 .mark {
     text-align: center;
-    font-size: 40px;
+    font-size: 32px;
     overflow: hidden;
     padding: 0px;
     margin: 0px;
     position: absolute;
-    top: 10px;
-    left: 16px
+    top: 6px;
+    left: 12px
 }
 
 .toast__message {
@@ -50,21 +50,29 @@ table td {
 
 .selectableField {
     text-align: center;
-    height: 60px;
-    width: 60px;
+    height: 45px;
+    width: 45px;
     padding: 0px;
     margin: 0px;
 }
 
-.alert-dialog-mask.animated{
+.alert-dialog-mask{
     z-index: 1;
 }
 
-.alert-dialog.animated{
+.alert-dialog{
     z-index: 2;
+    box-shadow: lightgrey 1px 3px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
 }
 
 .center-text{
     text-align: center;
     display: block;
+}
+
+.field.in-active{
+    background-color: gray;
 }

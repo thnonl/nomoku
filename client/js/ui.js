@@ -46,36 +46,55 @@ Template.ui.helpers({
             let myGame = Games.findOne({$or: [{player1: Meteor.userId()}, {player2: Meteor.userId()}]});
 
             let message = "";
-            let isGameOver = false;
-            if (myGame.status === GameStatus.WAITING) {
-                message = "Looking for an opponent...";
-            }
-            else if (myGame.status === Meteor.userId()) {
-                message = "Your turn: X";
-            }
-            else if (myGame.status !== Meteor.userId() && myGame.status !== GameStatus.END) {
-                message = "Opponent's turn: O";
-            }
-            else if (myGame.result === Meteor.userId()) {
-                message = "You won!";
-                isGameOver = true;
-            }
-            else if (myGame.status === GameStatus.END && myGame.result !== Meteor.userId() && myGame.result !== GameStatus.DRAW) {
-                message = "You lost!";
-                isGameOver = true;
-            }
-            else if (myGame.result === GameStatus.DRAW) {
-                message = "Draw!";
-                isGameOver = true;
-            }
-            else {
-                message = "";
+            if (myGame !== undefined) {
+                if (myGame.status === GameStatus.WAITING) {
+                    message = "Looking for an opponent...";
+                }
+                else if (myGame.status === Meteor.userId()) {
+                    message = "Your turn: X";
+                }
+                else if (myGame.status !== Meteor.userId() && myGame.status !== GameStatus.END) {
+                    message = "Opponent's turn: O";
+                }
+                else {
+                    message = "";
+                }
             }
 
-            // Show status or message if game over
-            return isGameOver
-                ?
-                "<div class=\"alert-dialog animated\">" +
+            // Show status
+            return message !== "" ?
+                "<div class='toast animated out'>" +
+                "   <div class='toast__message'>" + message +
+                "   </div>" +
+                "</div>"
+                : "";
+        }
+    },
+    result: () => {
+        if (Session.get("inGame")) {
+            let myGame = Games.findOne({
+                $and: [{status: {$in: [GameStatus.END, GameStatus.DRAW]}},
+                    {$or: [{player1: Meteor.userId()}, {player2: Meteor.userId()}]}
+                ]
+            });
+
+            let message = "";
+            if (myGame !== undefined) {
+                if (myGame.result === Meteor.userId()) {
+                    message = "You won!";
+                }
+                else if (myGame.status === GameStatus.END && myGame.result !== Meteor.userId() && myGame.result !== GameStatus.DRAW) {
+                    message = "You lost!";
+                }
+                else if (myGame.result === GameStatus.DRAW) {
+                    message = "Draw!";
+                }
+            }
+
+            // Show result if game over
+            return message !== "" ?
+                "<div class=\"alert-dialog-mask\"></div>" +
+                "<div class=\"alert-dialog\">" +
                 "  <div class=\"alert-dialog-container\">" +
                 "  <div class=\"alert-dialog-title\">Game over</div>" +
                 "  <div class=\"alert-dialog-content\">" + message +
@@ -86,19 +105,16 @@ Template.ui.helpers({
                 "   </div>" +
                 "  </div>" +
                 "</div>"
-                :
-                "<div class='toast animated out'>" +
-                "   <div class='toast__message'>" + message +
-                "   </div>" +
-                "</div>";
+                : "";
         }
-    },
+    }
+    ,
     joinBtn: () => {
         let myGame = Games.findOne({status: GameStatus.WAITING});
 
         return myGame !== undefined
             ?
-            "<button class=\"button button--outline animated out\" id=\"join-btn\">Join room</button>" +
+            "<button class=\"button button--outline\" id=\"join-btn\">Join room</button>" +
             "<i class='center-text'>Game found, you can join the game now! </i>"
             :
             "";

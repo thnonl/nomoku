@@ -4,14 +4,19 @@
             {{#if disabled}}
                 <div class='progress-bar progress-bar--material progress-bar--indeterminate'>
                 </div>
+            {{else}}
+                <button class="button" id="give-up-btn">Give up</button>
             {{/if}}
-            <button class="button" id="give-up-btn">Give up</button>
-            {{#transition in="fadeInUp:200"}}
+
+            {{#transition wrap="true" in="fadeInUp:200"}}
                 {{{status}}}
             {{/transition}}
+            {{#transition wrap="true" in="fadeIn:500"}}
+                {{{result}}}
+            {{/transition}}
         {{else}}
-            <button class="button" id="create-btn" {{disabled}}>New game</button>
-            {{#transition in="bounceIn:400"}}
+            {{#transition wrap="true" in="bounceIn:400"}}
+                <button class="button" id="create-btn" {{disabled}}>New game</button>
                 {{{joinBtn}}}
             {{/transition}}
         {{/if}}
