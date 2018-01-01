@@ -9,8 +9,8 @@ table td {
 }
 
 .field {
-    height: 45px;
-    width: 45px;
+    height: 30px;
+    width: 30px;
     background-color: lightyellow;
     overflow: hidden;
     border: 1px solid black;
@@ -29,8 +29,8 @@ table td {
 
 #board{
     position: absolute;
-    top: 170px;
-    left: calc((100% - 461px)/2);
+    top: 130px;
+    left: calc((100% - 542px)/2);
 }
 
 .mark {
@@ -50,8 +50,8 @@ table td {
 
 .selectableField {
     text-align: center;
-    height: 45px;
-    width: 45px;
+    height: 30px;
+    width: 30px;
     padding: 0px;
     margin: 0px;
 }
