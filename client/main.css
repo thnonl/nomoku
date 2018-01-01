@@ -35,13 +35,13 @@ table td {
 
 .mark {
     text-align: center;
-    font-size: 32px;
+    font-size: 25px;
     overflow: hidden;
     padding: 0px;
     margin: 0px;
     position: absolute;
-    top: 6px;
-    left: 12px
+    top: 2px;
+    left: 8px
 }
 
 .toast__message {

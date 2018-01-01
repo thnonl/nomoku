@@ -2,6 +2,13 @@
 
 ## Demo at https://nomoku.herokuapp.com/
 
+## Include features
+
+* Players place “X” or “O” on the board on their own browsers
+* Check victory condition and display status of the game
+* Support multiple parallel game sessions
+* Anonymous players can play intermediately, no need login/sign up
+
 ## Requirements
 
 * [Meteor](https://www.meteor.com/install)
