@@ -36,9 +36,23 @@ Template.ui.events({
         }
     },
     "click #join-btn": () => {
-        Session.set("inGame", true);
-        Meteor.call("games.join");
-        Meteor.subscribe('MyGame');
+        if (Session.get("inGame")) {
+            Session.set("inGame", false);
+            Meteor.logout(function () {
+                $('#create-btn').fadeOut(400);
+                setTimeout(function () {
+                    Session.set("inGame", true);
+                    Meteor.call("games.join");
+                    Meteor.subscribe('MyGame');
+                }, 500);
+            });
+        }
+        else {
+            $('#create-btn').fadeOut(400);
+            Session.set("inGame", true);
+            Meteor.call("games.join");
+            Meteor.subscribe('MyGame');
+        }
     },
     "click #ok-btn": () => {
         $('.alert-dialog-mask, .alert-dialog').hide();
