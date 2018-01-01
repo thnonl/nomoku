@@ -5,13 +5,7 @@ import {Games} from '../lib/collections';
 import {GameStatus} from "../lib/constants";
 
 Meteor.publish('Games', function gamesPublication() {
-    return Games.find({status: GameStatus.WAITING}, {
-        fields: {
-            "status": 1,
-            "player1": 1,
-            "player2": 1
-        }
-    });
+    return Games.find();
 });
 
 Meteor.publish('MyGame', function myGamePublication() {

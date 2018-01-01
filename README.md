@@ -1,5 +1,7 @@
 # Building a Multiplayer Nomoku Game in Meteor
 
+## Demo at https://nomoku.herokuapp.com/
+
 ## Requirements
 
 * [Meteor](https://www.meteor.com/install)

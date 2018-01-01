@@ -1,9 +1,13 @@
 <template name="ui">
     <div id="ui">
         {{#if inGame}}
-            {{#if disabled}}
+            {{#if isFinding}}
                 <div class='progress-bar progress-bar--material progress-bar--indeterminate'>
                 </div>
+            {{/if}}
+
+            {{#if isEndGame}}
+                <button class="button" id="create-btn">New game</button>
             {{else}}
                 <button class="button" id="give-up-btn">Give up</button>
             {{/if}}
@@ -16,7 +20,7 @@
             {{/transition}}
         {{else}}
             {{#transition wrap="true" in="bounceIn:400"}}
-                <button class="button" id="create-btn" {{disabled}}>New game</button>
+                <button class="button" id="create-btn">New game</button>
                 {{{joinBtn}}}
             {{/transition}}
         {{/if}}
