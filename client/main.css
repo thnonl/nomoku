@@ -46,6 +46,7 @@ table td {
 
 .toast__message {
     overflow: visible !important;
+    text-align: center !important;
 }
 
 .selectableField {
