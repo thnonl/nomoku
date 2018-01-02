@@ -4,6 +4,12 @@
             {{#if isFinding}}
                 <div class='progress-bar progress-bar--material progress-bar--indeterminate'>
                 </div>
+            {{else}}
+                {{#unless isEndGame}}
+                    <div id="hint-div">
+                        <button class="button button--material--flat" id="hint-btn">Hint</button>
+                    </div>
+                {{/unless}}
             {{/if}}
 
             {{#if isEndGame}}
@@ -11,9 +17,6 @@
                 {{{joinBtn}}}
             {{else}}
                 <button class="button button--material" id="give-up-btn">Give up</button>
-                <div id="hint-div">
-                    <button class="button button--material--flat" id="hint-btn">Hint</button>
-                </div>
             {{/if}}
 
             {{#transition wrap="true" in="fadeInUp:200"}}
