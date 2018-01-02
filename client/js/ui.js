@@ -30,9 +30,9 @@ Template.ui.events({
     },
     "click #give-up-btn": () => {
         if (Session.get("inGame")) {
-            Session.set("inGame", false);
-            Meteor.call("games.giveUp");
-            Meteor.logout();
+            Meteor.logout(function () {
+                Session.set("inGame", false);
+            });
         }
     },
     "click #join-btn": () => {
@@ -65,7 +65,7 @@ Template.ui.events({
                     for (let i = 0; i < result.length; i++) {
                         let ele = $('.field[x=' + result[i].positionX + '][y=' + result[i].positionY + ']');
                         console.log(ele.find('.mark').length);
-                        if (ele.find('.mark').length <= 0){
+                        if (ele.find('.mark').length <= 0) {
                             ele.addClass('highlight');
                             break;
                         }
@@ -166,7 +166,7 @@ Template.ui.helpers({
     }
     ,
     joinBtn: () => {
-        let myGame = Games.findOne({status: GameStatus.WAITING});
+        let myGame = Games.findOne({$and: [{status: GameStatus.WAITING}, {player2: ""}]});
 
         return myGame !== undefined
             ?
