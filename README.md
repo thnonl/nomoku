@@ -22,5 +22,5 @@
 5. Visit http://localhost:3000/
 
 ## Author
-Nam Thai
-First game with Meteor
+* Nam Thai
+* First game with Meteor
