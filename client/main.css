@@ -25,6 +25,15 @@ table td {
     height: 50px;
     font-size: 25px;
     cursor: pointer;
+    text-transform: inherit;
+}
+
+#hint-div{
+    text-align: center;
+}
+
+#hint-btn{
+    margin: 0 auto;
 }
 
 #board{
@@ -42,6 +51,14 @@ table td {
     position: absolute;
     top: 2px;
     left: 8px
+}
+
+.mark.green{
+    color: green;
+}
+
+.mark.red{
+    color: red;
 }
 
 .toast__message {
@@ -76,4 +93,20 @@ table td {
 
 .field.in-active{
     background-color: gray;
+}
+
+.highlight{
+    -webkit-animation: highlight 0.5s 3; /* Safari 4.0 - 8.0 */
+    animation: highlight 0.5s 3;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes highlight {
+    from {background-color: red}
+    to {background-color: green}
+}
+
+@keyframes highlight {
+    from {background-color: red}
+    to {background-color: green}
 }

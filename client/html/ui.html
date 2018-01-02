@@ -7,10 +7,13 @@
             {{/if}}
 
             {{#if isEndGame}}
-                <button class="button" id="create-btn">New game</button>
+                <button class="button button--material" id="create-btn">New game</button>
                 {{{joinBtn}}}
             {{else}}
-                <button class="button" id="give-up-btn">Give up</button>
+                <button class="button button--material" id="give-up-btn">Give up</button>
+                <div id="hint-div">
+                    <button class="button button--material--flat" id="hint-btn">Hint</button>
+                </div>
             {{/if}}
 
             {{#transition wrap="true" in="fadeInUp:200"}}
@@ -21,7 +24,7 @@
             {{/transition}}
         {{else}}
             {{#transition wrap="true" in="bounceIn:400"}}
-                <button class="button" id="create-btn">New game</button>
+                <button class="button button--material" id="create-btn">New game</button>
                 {{{joinBtn}}}
             {{/transition}}
         {{/if}}

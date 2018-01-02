@@ -56,6 +56,23 @@ Template.ui.events({
     },
     "click #ok-btn": () => {
         $('.alert-dialog-mask, .alert-dialog').hide();
+    },
+    "click #hint-btn": () => {
+        Meteor.call("games.hint", function (error, result) {
+            if (result !== undefined) {
+                $('.highlight').removeClass('highlight');
+                setTimeout(function () {
+                    for (let i = 0; i < result.length; i++) {
+                        let ele = $('.field[x=' + result[i].positionX + '][y=' + result[i].positionY + ']');
+                        console.log(ele.find('.mark').length);
+                        if (ele.find('.mark').length <= 0){
+                            ele.addClass('highlight');
+                            break;
+                        }
+                    }
+                }, 200);
+            }
+        });
     }
 });
 
@@ -157,5 +174,5 @@ Template.ui.helpers({
             "<i class='center-text'>Game found, you can join the game now! </i>"
             :
             "";
-    }
+    },
 });
