@@ -95,6 +95,12 @@ table td {
     background-color: gray;
 }
 
+#progress-bar{
+    position: absolute;
+    top:0;
+    left: 0;
+}
+
 .highlight{
     -webkit-animation: highlight 0.5s 3; /* Safari 4.0 - 8.0 */
     animation: highlight 0.5s 3;
