@@ -64,7 +64,6 @@ Template.ui.events({
                 setTimeout(function () {
                     for (let i = 0; i < result.length; i++) {
                         let ele = $('.field[x=' + result[i].positionX + '][y=' + result[i].positionY + ']');
-                        console.log(ele.find('.mark').length);
                         if (ele.find('.mark').length <= 0) {
                             ele.addClass('highlight');
                             break;
