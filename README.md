@@ -1,4 +1,4 @@
-# Building a Multiplayer Nomoku Game in Meteor
+# Building a Multiplayer Nomoku (Nam's Gomoku) Game in Meteor
 
 ## Demo at https://nomoku.herokuapp.com/
 
