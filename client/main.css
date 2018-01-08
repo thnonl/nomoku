@@ -9,11 +9,19 @@ table td {
 }
 
 .field {
-    height: 30px;
-    width: 30px;
+    height: 25px;
+    width: 25px;
     background-color: lightyellow;
     overflow: hidden;
     border: 1px solid black;
+}
+
+.selectableField {
+    text-align: center;
+    height: 25px;
+    width: 25px;
+    padding: 0px;
+    margin: 0px;
 }
 
 #ui {
@@ -37,20 +45,22 @@ table td {
 }
 
 #board{
+    margin: 0 auto;
+}
+
+#div-board {
     position: absolute;
     top: 130px;
-    left: calc((100% - 542px)/2);
+    width: 100%;
 }
 
 .mark {
     text-align: center;
-    font-size: 25px;
+    font-size: 140%;
     overflow: hidden;
     padding: 0px;
     margin: 0px;
-    position: absolute;
-    top: 2px;
-    left: 8px
+    vertical-align: middle;
 }
 
 .mark.green{
@@ -64,14 +74,6 @@ table td {
 .toast__message {
     overflow: visible !important;
     text-align: center !important;
-}
-
-.selectableField {
-    text-align: center;
-    height: 30px;
-    width: 30px;
-    padding: 0px;
-    margin: 0px;
 }
 
 .alert-dialog-mask{

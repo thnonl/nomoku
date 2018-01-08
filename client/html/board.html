@@ -1,19 +1,21 @@
 <template name="board">
-    <table id="board">
-        {{#each sideLength}}
-            {{#let rowIndex=@index}}
-                <tr>
-                    {{#transition in="bounceIn"}}
-                        {{#each sideLength}}
-                            <td class="field {{active}} animated" x="{{rowIndex}}" y="{{@index}}">
-                                {{#transition in="bounceIn:800"}}
-                                    {{{isMarked rowIndex @index}}}
-                                {{/transition}}
-                            </td>
-                        {{/each}}
-                    {{/transition}}
-                </tr>
-            {{/let}}
-        {{/each}}
-    </table>
+    <div id="div-board">
+        <table id="board">
+            {{#each sideLength}}
+                {{#let rowIndex=@index}}
+                    <tr>
+                        {{#transition in="bounceIn"}}
+                            {{#each sideLength}}
+                                <td class="field {{active}} animated" x="{{rowIndex}}" y="{{@index}}">
+                                    {{#transition in="bounceIn:800"}}
+                                        {{{isMarked rowIndex @index}}}
+                                    {{/transition}}
+                                </td>
+                            {{/each}}
+                        {{/transition}}
+                    </tr>
+                {{/let}}
+            {{/each}}
+        </table>
+    </div>
 </template>
