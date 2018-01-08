@@ -9,8 +9,8 @@ table td {
 }
 
 .field {
-    height: 25px;
     width: 25px;
+    height: 25px;
     background-color: lightyellow;
     overflow: hidden;
     border: 1px solid black;
@@ -18,10 +18,8 @@ table td {
 
 .selectableField {
     text-align: center;
-    height: 25px;
     width: 25px;
-    padding: 0px;
-    margin: 0px;
+    height: 25px;
 }
 
 #ui {
@@ -29,7 +27,7 @@ table td {
 }
 
 #create-btn, #join-btn, #give-up-btn {
-    margin: 20px;
+    margin: 20px 20px 20px 10px;
     height: 50px;
     font-size: 25px;
     cursor: pointer;
